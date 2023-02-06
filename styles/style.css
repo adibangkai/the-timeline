@@ -1,0 +1,13 @@
+/** @type {import('tailwindcss').Config} */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+* {
+  box-sizing: border-box;
+}
+
+.judul {
+  font-family: var(--alagreyaSC-font);
+  font-weight: 800;
+}

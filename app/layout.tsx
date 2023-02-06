@@ -1,18 +1,21 @@
-import './globals.css'
+import "@/styles/style.css";
+import { Alegreya_Sans } from "@next/font/google";
+
+const alagreyaSC = Alegreya_Sans({
+  subsets: ["cyrillic"],
+  variable: "--alagreyaSC-font",
+  weight: ["500", "400", "700"],
+});
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      {/*
-        <head /> will contain the components returned by the nearest parent
-        head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
-      */}
+    <html className={alagreyaSC.variable}>
       <head />
-      <body>{children}</body>
+      <body className="bg-white h-screen w-screen px-32">{children}</body>
     </html>
-  )
+  );
 }
