@@ -1,3 +1,4 @@
+import Navbar from "@/components/Navbar";
 import "@/styles/style.css";
 import { Alegreya_Sans } from "@next/font/google";
 
@@ -15,7 +16,10 @@ export default function RootLayout({
   return (
     <html className={alagreyaSC.variable}>
       <head />
-      <body className="bg-white h-screen w-screen px-32">{children}</body>
+      <body className="bg-white h-screen w-screen">
+        <Navbar />
+        {children}
+      </body>
     </html>
   );
 }
