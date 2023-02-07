@@ -5,7 +5,7 @@ import Image from "next/image";
 export default function Home() {
   return (
     <div className="w-full">
-      <div className="grid grid-cols-4 gap-10 px-0 md:px-40   mt-32  my-auto">
+      <div className="grid grid-cols-4 gap-5 px-0 md:px-40   mt-32  my-auto mb-10">
         <ProfileCard poto="jokowi" />
         <ProfileCard poto="ganjar" />
         <ProfileCard poto="erik" />

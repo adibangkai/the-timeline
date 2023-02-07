@@ -19,6 +19,12 @@ export default function RootLayout({
       <body className="bg-white h-screen w-screen">
         <Navbar />
         {children}
+        <div className="text-center pb-8 font-light text-sm">
+          <a href="https://github.com/adibangkai/" className="font-bold">
+            Jejak
+          </a>{" "}
+          © 2023
+        </div>
       </body>
     </html>
   );
