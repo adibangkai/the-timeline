@@ -1,34 +1,46 @@
+import Link from "next/link";
 const Navbar = () => {
   return (
-    <nav className="fixed px-8 md:px-32 sm:px-20 bg-white py-2.5  w-full z-20 top-0 left-0">
-      <div className="container flex flex-wrap items-center justify-between mx-auto">
-        <p className="flex items-center">
-          <span className="judul self-center text-3xl font-semibold whitespace-nowrap text-sky-900 ">
-            JEJAK
-          </span>
-        </p>
-        <div className="items-center justify-between w-full md:flex md:w-auto hidden">
-          <ul className="flex flex-col p-4 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-xl md:font-medium md:border-0 md:bg-white ">
+    <div className="navbar fixed top-0 z-20 pt-5 glass">
+      <div className="navbar-start">
+        <div className="dropdown">
+          <label tabIndex={0} className="btn btn-ghost btn-circle">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M4 6h16M4 12h16M4 18h7"
+              />
+            </svg>
+          </label>
+          <ul
+            tabIndex={0}
+            className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+          >
             <li>
-              <a
-                href="#"
-                className="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-900 md:hover:bg-transparent md:hover:text-blue-700 md:p-0  "
-              >
-                Tentang
-              </a>
+              <a>Homepage</a>
             </li>
             <li>
-              <a
-                href="#"
-                className="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-900 md:hover:bg-transparent md:hover:text-blue-700 md:p-0  "
-              >
-                Saran
-              </a>
+              <a>Portfolio</a>
+            </li>
+            <li>
+              <a>About</a>
             </li>
           </ul>
         </div>
       </div>
-    </nav>
+      <div className="navbar-center">
+        <a className="btn btn-ghost normal-case text-4xl judul">JEJAK</a>
+      </div>
+      <div className="navbar-end"></div>
+    </div>
   );
 };
 
