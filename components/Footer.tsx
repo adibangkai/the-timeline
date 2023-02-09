@@ -1,8 +1,8 @@
 export default function Footer() {
   return (
-    <footer className="footer footer-center p-10 bg-white text-dark-content">
+    <footer className="footer footer-center p-4 bg-base-100 text-dark-content mt-auto ">
       <div>
-        <p className="font-bold judul text-2xl">JEJAK</p>
+        <p className="font-bold judul text-2xl text-sky-700">JEJAK</p>
         <p>Copyright © 2023 - All right reserved</p>
       </div>
       <div>

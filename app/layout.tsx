@@ -17,7 +17,7 @@ export default function RootLayout({
   return (
     <html className={alagreyaSC.variable}>
       <head />
-      <body className="bg-white h-screen w-screen">
+      <body className="bg-base-10 h-screen w-screen flex flex-col min-h-screen ">
         <Navbar />
         {children}
         <Footer />

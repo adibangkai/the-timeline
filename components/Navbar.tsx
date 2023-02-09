@@ -1,7 +1,9 @@
 import Link from "next/link";
+import { ImSun } from "react-icons/im";
+
 const Navbar = () => {
   return (
-    <div className="navbar fixed top-0 z-20 pt-5 glass">
+    <div className="navbar fixed top-0 z-20 pt-5 bg-base-100  ">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost btn-circle">
@@ -25,19 +27,21 @@ const Navbar = () => {
             className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
           >
             <li>
-              <a>Homepage</a>
+              <Link href={"/"}>Home</Link>
             </li>
             <li>
-              <a>Portfolio</a>
+              <Link href={"/saran"}>Saran</Link>
             </li>
             <li>
-              <a>About</a>
+              <Link href={"/kontribusi"}>Kontribusi</Link>
             </li>
           </ul>
         </div>
       </div>
       <div className="navbar-center">
-        <a className="btn btn-ghost normal-case text-4xl judul">JEJAK</a>
+        <Link href={"/"} className=" normal-case text-4xl judul text-sky-700 ">
+          JEJAK
+        </Link>
       </div>
       <div className="navbar-end"></div>
     </div>
