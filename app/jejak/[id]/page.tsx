@@ -15,8 +15,8 @@ export default function Jejak() {
           >
             <div className="tanggal text-gray-300 ">21 April 2022</div>
             <div className="quotes  text-2xl md:text-4xl font-extralight secondary-content ">
-              "Banyak yang perlu ditingkatkan, khususnya kemasannya dan saya
-              liat juga banyak produk baru dari OK OCE,"
+              &quot; Banyak yang perlu ditingkatkan, khususnya kemasannya dan
+              saya liat juga banyak produk baru dari OK OCE,&quot;
             </div>
             <div className="sumber text-gray-300 font-extralight ">
               (sumber: merdeka.com)
@@ -29,10 +29,11 @@ export default function Jejak() {
           >
             <div className="tanggal text-gray-300 ">21 April 2022</div>
             <div className="quotes  text-2xl md:text-4xl font-extralight secondary-content ">
-              "Kenapa? Air itu turun dari langit ke bumi bukan ke laut. Harusnya
-              dimasukkan ke dalam bumi, masukkan ke tanah. Di seluruh dunia, air
-              jatuh dimasukkan ke tanah. Bukan dialirkan pakai gorong-gorong
-              raksasa ke laut. Jakarta telah mengambil keputusan yang fatal..."
+              &quot; Kenapa? Air itu turun dari langit ke bumi bukan ke laut.
+              Harusnya dimasukkan ke dalam bumi, masukkan ke tanah. Di seluruh
+              dunia, air jatuh dimasukkan ke tanah. Bukan dialirkan pakai
+              gorong-gorong raksasa ke laut. Jakarta telah mengambil keputusan
+              yang fatal...&quot;
             </div>
             <div className="sumber text-gray-300 font-extralight ">
               (sumber: merdeka.com)
@@ -45,10 +46,11 @@ export default function Jejak() {
           >
             <div className="tanggal text-gray-300 ">21 April 2022</div>
             <div className="quotes  text-2xl md:text-4xl font-extralight secondary-content ">
-              "Kenapa? Air itu turun dari langit ke bumi bukan ke laut. Harusnya
-              dimasukkan ke dalam bumi, masukkan ke tanah. Di seluruh dunia, air
-              jatuh dimasukkan ke tanah. Bukan dialirkan pakai gorong-gorong
-              raksasa ke laut. Jakarta telah mengambil keputusan yang fatal..."
+              &quot; Kenapa? Air itu turun dari langit ke bumi bukan ke laut.
+              Harusnya dimasukkan ke dalam bumi, masukkan ke tanah. Di seluruh
+              dunia, air jatuh dimasukkan ke tanah. Bukan dialirkan pakai
+              gorong-gorong raksasa ke laut. Jakarta telah mengambil keputusan
+              yang fatal...&quot;
             </div>
             <div className="sumber text-gray-300 font-extralight ">
               (sumber: merdeka.com)

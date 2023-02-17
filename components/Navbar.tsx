@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { ImSun } from "react-icons/im";
 
 const Navbar = () => {
   return (

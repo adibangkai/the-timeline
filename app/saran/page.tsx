@@ -1,10 +1,8 @@
 export default function SaranPage() {
   return (
-    <div className="h-fit w-4/6 mx-auto mt-20 min-h-max">
-      <div className="px-10 py-10 bg-sky-700">
-        <p className="text-2xl font-bold text-white text-center">
-          Saran Untuk Kami
-        </p>
+    <div className="h-fit w-5/6 md:w-4/6 mx-auto mt-20 min-h-max">
+      <div className="px-10 py-8 ">
+        <p className="text-2xl font-bold  text-center">Saran Untuk Kami</p>
       </div>
       <form action="w-full">
         <div className="form-control w-full flex flex-row gap-4 ">
@@ -34,7 +32,7 @@ export default function SaranPage() {
             <span className="label-text">Masukan</span>
           </label>
           <textarea
-            placeholder="Masukan"
+            placeholder="tulis pesan anda disini..."
             className="textarea textarea-bordered textarea-lg w-full rounded-none"
           ></textarea>
         </div>
