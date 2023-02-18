@@ -1,19 +1,14 @@
 const Timeline = () => {
   return (
-    <ul className="steps w-full  mx-auto z-30 sticky bottom-10">
-      <li className="step step-info ">Fly to moon</li>
-      <li className="step step-info ">Shrink the moon</li>
-      <li className="step step-info ">Grab the moon</li>
-      <li className="step step-info ">Grab the moon</li>
-      <li className="step step-info ">Grab the moon</li>
-      <li className="step step-info ">Grab the moon</li>
-      <li className="step step-info ">Grab the moon</li>
-      <li className="step step-info ">Grab the moon</li>
-      <li className="step step-info ">Grab the moon</li>
-      <li className="step step-info ">Grab the moon</li>
-      <li className="step step-info ">Grab the moon</li>
-      <li className="step step-error" data-content="?">
-        Sit on toilet
+    <ul className=" sticky flex gap-4 justify-around  w-full  mx-auto z-40  bottom-10 items-baseline">
+      <li className="" data-to-scrollspy-id="jkt">
+        Fly to moon
+      </li>
+      <li className=" " data-to-scrollspy-id="bdg">
+        Shrink the moon
+      </li>
+      <li className="" data-to-scrollspy-id="oke">
+        Grab the moon
       </li>
     </ul>
   );

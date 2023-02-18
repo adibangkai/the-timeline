@@ -3,8 +3,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@layer components {
+  .true {
+    @apply border-t-2 border-sky-400 mt-2;
+  }
+}
 * {
   box-sizing: border-box;
+}
+.active-scroll-spy {
+  background-color: yellowgreen;
+  border-radius: 15px;
+  transition: all 0.5s;
 }
 
 .judul {
