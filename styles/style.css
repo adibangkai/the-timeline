@@ -5,11 +5,18 @@
 @tailwind utilities;
 @layer components {
   .true {
-    @apply border-t-2 border-sky-400 mt-2;
+    @apply border-t-2 border-sky-400 mt-2 h-2;
+  }
+  .time-bar {
+    @apply bottom-10 left-0 w-full bg-sky-800 rounded-full h-1 mt-2.5 origin-[0%];
   }
 }
 * {
   box-sizing: border-box;
+}
+body {
+  margin: 0;
+  padding: 0;
 }
 .active-scroll-spy {
   background-color: yellowgreen;
@@ -20,4 +27,7 @@
 .judul {
   font-family: var(--alagreyaSC-font);
   font-weight: 800;
+}
+html {
+  scroll-padding-top: 150px; /* height of your navbar */
 }
