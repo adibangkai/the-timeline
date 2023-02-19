@@ -23,6 +23,7 @@ export default function Jejak() {
     </>
   );
 }
+
 type QuotesType = {
   containerRef: React.RefObject<HTMLDivElement>;
 };
@@ -35,12 +36,12 @@ function Quotes({ containerRef }: QuotesType) {
       className="snap-always snap-start w-full md:w-5/6 px-10  pt-[30%] md:pt-[16%] h-screen transition-opacity duration-800 ease-in-out opacity-100 "
     >
       <motion.div
-        initial={{ y: -150, opacity: 0.4 }}
-        whileInView={{ y: 0, opacity: 1 }}
+        initial={{ y: 250, opacity: 0 }}
+        whileInView={{ y: 0, opacity: 1, type: "tween" }}
         transition={{ delay: 0.6 }}
-        className="tanggal text-base-300 font-light "
+        className="tanggal text-zinc-400 font-extralight "
       >
-        21 April 2022 jkt
+        21 April 2022
       </motion.div>
       <motion.div
         initial={{ opacity: 0 }}
@@ -48,14 +49,14 @@ function Quotes({ containerRef }: QuotesType) {
         transition={{ delay: 0.3 }}
         className="quotes  text-2xl md:text-4xl font-extralight secondary-content "
       >
-        &quot; Banyak yang perlu ditingkatkan, khususnya kemasannya dan saya
-        liat juga banyak produk baru dari OK OCE,&quot;
+        &quot;Banyak yang perlu ditingkatkan, khususnya kemasannya dan saya liat
+        juga banyak produk baru dari OK OCE,&quot;
       </motion.div>
       <motion.div
-        initial={{ y: -300, opacity: 0 }}
+        initial={{ y: -100, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1, type: "tween" }}
         transition={{ delay: 0.8 }}
-        className="sumber text-gray-300 font-extralight "
+        className="sumber text-zinc-400 font-extralight text-xs"
       >
         (sumber: merdeka.com)
       </motion.div>
