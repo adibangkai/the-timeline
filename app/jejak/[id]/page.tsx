@@ -1,12 +1,24 @@
-import Timeline from "@/components/Timeline";
 import Jejak from "@/components/Jejak";
-import Footer from "@/components/Footer";
+import { db } from "@/lib/db";
+import Quotes from "@/components/Quotes";
 
-export default function JejakPage() {
+const getData = async (id: string) => {
+  const quotes = await db.quotes.findMany({
+    where: { tokohId: id },
+    orderBy: { dateQuote: "asc" },
+  });
+  console.log(quotes);
+
+  return { quotes };
+};
+export default async function JejakPage({ params }) {
+  const { quotes } = await getData(params.id);
+  console.log(quotes);
+
   return (
     <>
-      <div className="w-full">
-        <Jejak />
+      <div className="w-full ">
+        <Jejak quotes={quotes} />
       </div>
     </>
   );

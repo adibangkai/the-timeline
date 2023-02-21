@@ -1,0 +1,50 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String    @id @default(uuid())
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  email     String    @unique
+  password  String
+  firstName String?
+  lastName  String?
+  level     String
+}
+
+
+model Tokoh {
+  id          String   @id @default(uuid())
+  name        String
+  nick        String
+  fullname    String
+  partai      String
+  quotes      Quotes[]
+  deleted     Boolean   @default(false)
+}
+
+
+model Quotes {
+  id          String   @id @default(uuid())
+  createdAt   DateTime @default(now())
+
+  tokohId     String
+  tokoh       Tokoh @relation(fields: [tokohId], references: [id])
+
+  quote       String
+  dateQuote   DateTime
+  sourceQuote String
+
+  deleted     Boolean   @default(false)
+
+  @@index([tokohId, dateQuote(sort: Desc)])
+}

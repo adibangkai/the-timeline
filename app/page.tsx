@@ -1,21 +1,20 @@
-import Carousel from "@/components/Carousel";
-import Navbar from "@/components/Navbar";
 import ProfileCard from "@/components/ProfileCard";
-import Image from "next/image";
+import { db } from "@/lib/db";
 
-export default function Home() {
+const getData = async () => {
+  const tokohIndex = await db.tokoh.findMany();
+  return { tokohIndex };
+};
+export default async function Home() {
+  const { tokohIndex } = await getData();
+
   return (
     <div className="w-full ">
       {/* <Carousel /> */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 px-20 md:px-20 lg:px-40  mt-32  my-auto mb-10">
-        <ProfileCard poto="jokowi" />
-        <ProfileCard poto="ganjar" />
-        <ProfileCard poto="erik" />
-        <ProfileCard poto="ahy" />
-        <ProfileCard poto="air" />
-        <ProfileCard poto="anies" />
-        <ProfileCard poto="rk" />
-        <ProfileCard poto="sandi" />
+        {tokohIndex.map((tokoh) => (
+          <ProfileCard key={tokoh.id} tokoh={tokoh} />
+        ))}
       </div>
     </div>
   );

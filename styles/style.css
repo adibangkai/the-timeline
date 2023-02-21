@@ -10,6 +10,12 @@
   .time-bar {
     @apply bottom-10 left-0 w-full bg-sky-800 rounded-full h-1 mt-2.5 origin-[0%];
   }
+  .PDIP {
+    @apply bg-rose-400 text-white;
+  }
+  .Demokrat {
+    @apply bg-rose-400 text-white;
+  }
 }
 * {
   box-sizing: border-box;
