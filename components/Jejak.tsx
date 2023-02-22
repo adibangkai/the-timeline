@@ -6,6 +6,13 @@ import Quotes from "./Quotes";
 
 export default function Jejak({ quotes }) {
   const containerRef = useRef<HTMLDivElement>(null);
+  if (quotes.length === 0) {
+    return (
+      <div className="mt-80 text-center  text-2xl md:text-4xl font-extralight text-gray-400">
+        no quotes yet...
+      </div>
+    );
+  }
   return (
     <>
       <motion.div

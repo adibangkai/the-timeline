@@ -29,16 +29,29 @@ model Tokoh {
   fullname    String
   partai      String
   quotes      Quotes[]
+  topic       Topic[]
   deleted     Boolean   @default(false)
 }
 
-
-model Quotes {
+model Topic {
   id          String   @id @default(uuid())
   createdAt   DateTime @default(now())
 
   tokohId     String
   tokoh       Tokoh @relation(fields: [tokohId], references: [id])
+
+  topicName   String
+  quotes      Quotes[]
+
+}
+model Quotes {
+  id          String   @id @default(uuid())
+  createdAt   DateTime @default(now())
+
+  ownerId     String
+  owner       Tokoh @relation(fields: [ownerId], references: [id])
+  topicId     String 
+  topic       Topic @relation(fields: [topicId], references: [id])
 
   quote       String
   dateQuote   DateTime
@@ -46,5 +59,21 @@ model Quotes {
 
   deleted     Boolean   @default(false)
 
-  @@index([tokohId, dateQuote(sort: Desc)])
+  @@index([ownerId])
+}
+
+model Saran {
+  id          String   @id @default(uuid())
+  createdAt   DateTime @default(now())
+  name        String
+  email       String
+  masukan     String
+}
+model Kontribusi {
+  id          String   @id @default(uuid())
+  createdAt   DateTime @default(now())
+  name        String
+  email       String
+  masukan     String
+  sourceLink  String
 }

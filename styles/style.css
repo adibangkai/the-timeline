@@ -11,10 +11,22 @@
     @apply bottom-10 left-0 w-full bg-sky-800 rounded-full h-1 mt-2.5 origin-[0%];
   }
   .PDIP {
-    @apply bg-rose-400 text-white;
+    @apply bg-rose-600 text-white;
   }
   .Demokrat {
-    @apply bg-rose-400 text-white;
+    @apply bg-blue-600 text-white;
+  }
+  .Golkar {
+    @apply bg-amber-400 text-black;
+  }
+  .Nasdem {
+    @apply bg-blue-900 text-white;
+  }
+  .PKS {
+    @apply bg-orange-400 text-white;
+  }
+  .Netral {
+    @apply bg-base-100 text-black;
   }
 }
 * {

@@ -4,7 +4,7 @@ import Quotes from "@/components/Quotes";
 
 const getData = async (id: string) => {
   const quotes = await db.quotes.findMany({
-    where: { tokohId: id },
+    where: { ownerId: id },
     orderBy: { dateQuote: "asc" },
   });
   console.log(quotes);
