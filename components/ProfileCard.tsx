@@ -18,7 +18,7 @@ const partaiMap = {
 const ProfileCard: FC<{ tokoh: Tokoh }> = ({ tokoh }) => {
   const { nick, id, name, partai } = tokoh;
   return (
-    <Link href={`/jejak/${id}`}>
+    <Link href={`/profile/${id}`}>
       <div className="justify-center flex flex-col  cursor-pointer overflow-hidden grayscale hover:grayscale-0">
         <div className="h-min overflow-hidden  ">
           <Image

@@ -1,5 +1,6 @@
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
+import DashboardBar from "@/components/DashboardBar";
 import "@/styles/style.css";
 import { Alegreya_Sans } from "@next/font/google";
 
@@ -18,7 +19,7 @@ export default function RootLayout({
     <html className={alagreyaSC.variable}>
       <head />
       <body className="bg-base-100  flex flex-col min-h-screen ">
-        {children}
+        <DashboardBar>{children}</DashboardBar>
       </body>
     </html>
   );

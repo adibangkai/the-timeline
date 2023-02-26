@@ -21,13 +21,13 @@ model User {
   level     String
 }
 
-
 model Tokoh {
   id          String   @id @default(uuid())
   name        String
   nick        String
   fullname    String
   partai      String
+  jabatan     String?
   quotes      Quotes[]
   topic       Topic[]
   deleted     Boolean   @default(false)
