@@ -2,7 +2,10 @@ import Jejak from "@/components/Jejak";
 import { db } from "@/lib/db";
 import Quotes from "@/components/Quotes";
 import Image from "next/image";
+import { Metadata } from "next";
 import MapIndo from "@/components/MapIndo";
+import { Suspense } from "react";
+import MapSkeleton from "@/components/MapSkeleton";
 
 const getData = async (id: string) => {
   const tokoh = await db.tokoh.findUnique({
@@ -39,7 +42,9 @@ export default async function JejakPage({ params }) {
         </div>
 
         <div className="map mt-8">
-          <MapIndo tokoh={tokoh.nick} />
+          <Suspense fallback={<MapSkeleton />}>
+            <MapIndo tokoh={tokoh.nick} />
+          </Suspense>
         </div>
         <div className="capitalize font-extralight text-slate-400 text-xl text-center mt-10">
           Lihat Opini Mereka:
@@ -54,4 +59,9 @@ export default async function JejakPage({ params }) {
       </div>
     </>
   );
+}
+
+export async function generateMetadata({ params }) {
+  const { tokoh } = await getData(params.id);
+  return { title: `${tokoh.name} - Profil` };
 }

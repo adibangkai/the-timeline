@@ -1,5 +1,6 @@
 import ProfileCard from "@/components/ProfileCard";
 import { db } from "@/lib/db";
+import { Metadata } from "next";
 
 const getData = async () => {
   const tokohIndex = await db.tokoh.findMany();
@@ -18,3 +19,8 @@ export default async function Home() {
     </div>
   );
 }
+
+export const metadata: Metadata = {
+  title: "Jejak",
+  description: "Selamat Datang di Website Jejak",
+};
