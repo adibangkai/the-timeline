@@ -39,7 +39,7 @@ export default async function JejakPage({ params }) {
         </div>
 
         <div className="map mt-8">
-          <MapIndo />
+          <MapIndo tokoh={tokoh.nick} />
         </div>
         <div className="capitalize font-extralight text-slate-400 text-xl text-center mt-10">
           Lihat Opini Mereka:
