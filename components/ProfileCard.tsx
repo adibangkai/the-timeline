@@ -34,7 +34,9 @@ const ProfileCard: FC<{ tokoh: Tokoh }> = ({ tokoh }) => {
             `px-2 mx-auto w-full max-w-[314px] py-2 z-10 ${partaiMap[partai]}`
           )}
         >
-          <p className="text-lg font-medium text-center  capitalize ">{name}</p>
+          <p className="text-lg font-medium font-sans text-center  capitalize ">
+            {name}
+          </p>
         </div>
       </div>
     </Link>
