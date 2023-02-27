@@ -19,7 +19,7 @@ const ProfileCard: FC<{ tokoh: Tokoh }> = ({ tokoh }) => {
   const { nick, id, name, partai } = tokoh;
   return (
     <Link href={`/profile/${id}`}>
-      <div className="justify-center flex flex-col  cursor-pointer overflow-hidden grayscale hover:grayscale-0">
+      <div className="justify-center mx-auto flex max-w-[314px] flex-col  cursor-pointer overflow-hidden grayscale hover:grayscale-0">
         <div className="h-min overflow-hidden  ">
           <Image
             src={`/capres/${nick}.png`}
@@ -29,7 +29,11 @@ const ProfileCard: FC<{ tokoh: Tokoh }> = ({ tokoh }) => {
             className="w-[300px] scale-[1.04] hover:scale-[1.1] transition-all mx-auto"
           />
         </div>
-        <div className={clsx(`px-2 py-2 z-10 ${partaiMap[partai]}`)}>
+        <div
+          className={clsx(
+            `px-2 mx-auto w-full max-w-[314px] py-2 z-10 ${partaiMap[partai]}`
+          )}
+        >
           <p className="text-lg font-medium text-center  capitalize ">{name}</p>
         </div>
       </div>
