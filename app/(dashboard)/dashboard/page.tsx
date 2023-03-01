@@ -1,5 +1,6 @@
 import { db } from "@/lib/db";
 import Image from "next/image";
+import Link from "next/link";
 
 const getData = async () => {
   const tokohIndex = await db.tokoh.findMany();
@@ -11,7 +12,9 @@ export default async function DashboardPage() {
   return (
     <div className="w-full mt-4 mx-auto">
       <div className="w-3/4 mx-auto justify-end grid my-4">
-        <button className="btn btn-primary  ">tambah tokoh</button>
+        <Link href={"/tokoh"}>
+          <button className="btn btn-primary  ">tambah tokoh</button>
+        </Link>
       </div>
       <table className="table w-3/4 rounded-sm mx-auto  mb-14">
         {/* head */}
@@ -42,7 +45,9 @@ export default async function DashboardPage() {
 
               <td>{tokoh.partai}</td>
               <th>
-                <button className="btn btn-ghost btn-xs">details</button>
+                <Link href={`/details/${tokoh.id}`}>
+                  <button className="btn btn-ghost btn-xs">details</button>
+                </Link>
               </th>
             </tr>
           ))}

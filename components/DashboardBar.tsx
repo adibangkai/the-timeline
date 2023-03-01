@@ -1,11 +1,11 @@
 export default function DashboardBar({ children }) {
   return (
-    <div className="drawer">
-      <input id="my-drawer" type="checkbox" className="drawer-toggle" />
+    <div className="drawer ">
+      <input id="my-drawer" type="checkbox" className="drawer-toggle " />
       <div className="drawer-content">
         <label
           htmlFor="my-drawer"
-          className="btn bg-white text-black border-0 hover:bg-white hover:text-sky-600 drawer-button"
+          className="fixed btn bg-white text-black border-0 hover:bg-white hover:text-sky-600 drawer-button"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -30,6 +30,12 @@ export default function DashboardBar({ children }) {
           <div className="divider"></div>
           <li>
             <a>Tokoh</a>
+          </li>
+          <li>
+            <a>Saran</a>
+          </li>{" "}
+          <li>
+            <a>Masukan</a>
           </li>
           <li>
             <a>Logout</a>

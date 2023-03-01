@@ -35,15 +35,20 @@ export default async function JejakPage({ params }) {
             <Image
               src={`/partai/${tokoh?.partai}.png`}
               alt=""
-              width={80}
-              height={80}
+              width={100}
+              height={100}
               className=" absolute top-0 right-0 invisible md:visible"
             />
-            <div className="text-4xl font-bold">{tokoh.name}</div>
-            <div className="text-xl font-extralight text-slate-400">
-              ({tokoh.fullname})
+            <div className="text-4xl font-bold">
+              {tokoh.name}
+              <span className="text-xs font-extralight text-slate-400">
+                ({tokoh.fullname})
+              </span>
             </div>
-            <div>{tokoh?.jabatan}</div>
+
+            <div className="text-xl font-extralight text-slate-400">
+              Dikenal publik sebagai {tokoh?.jabatan}
+            </div>
           </div>
         </div>
 
