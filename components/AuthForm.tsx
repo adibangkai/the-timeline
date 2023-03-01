@@ -1,16 +1,19 @@
 "use client";
 
+import { signup } from "@/lib/api";
+import { signIn } from "next-auth/react";
 import Link from "next/link";
+import { useForm } from "react-hook-form";
 
 const registerContent = {
-  linkUrl: "/kurlogin",
+  linkUrl: "/signin",
   linkText: "Already have an Account?",
   header: "Create new account",
   subheader: "Just few things to get started",
   buttonText: "Register",
 };
 const signinContent = {
-  linkUrl: "/kurlegis",
+  linkUrl: "/register",
   linkText: "Don't have an account?",
   header: "Welcome!",
   subheader: "Enter your credentials to access your account",
@@ -18,6 +21,35 @@ const signinContent = {
 };
 
 const AuthForm = ({ mode }) => {
+  const { register, handleSubmit } = useForm({
+    defaultValues: {
+      email: "",
+      password: "",
+      firstName: "",
+      lastName: "",
+    },
+  });
+
+  const onSubmit = async (data) => {
+    try {
+      if (mode === "register") {
+        console.log("register trigger", data);
+        await signup(data);
+      } else {
+        // await signin(formState);
+        await signIn("credentials", {
+          email: data.email,
+          password: data.password,
+          redirect: true,
+          callbackUrl: "/dashboard",
+        });
+      }
+
+      // router.replace("/home");
+    } catch (e) {
+      // setError(`Could not ${mode}`);
+    }
+  };
   const content = mode === "register" ? registerContent : signinContent;
 
   return (
@@ -28,14 +60,41 @@ const AuthForm = ({ mode }) => {
             {" "}
             JEJAK
           </h2>
+          {mode === "register" && (
+            <>
+              <div className="form-control w-full justify-centers">
+                <label className="label">
+                  <span className="label-text">Nama Depan</span>
+                </label>
+                <input
+                  type="text"
+                  placeholder="Nama Depan"
+                  className="input input-bordered w-full "
+                  {...register("firstName", { required: true })}
+                />
+              </div>
+              <div className="form-control w-full justify-centers">
+                <label className="label">
+                  <span className="label-text">Nama Belakang</span>
+                </label>
+                <input
+                  type="text"
+                  placeholder="Nama Belakang"
+                  className="input input-bordered w-full"
+                  {...register("lastName", { required: true })}
+                />
+              </div>
+            </>
+          )}
           <div className="form-control w-full justify-centers">
             <label className="label">
-              <span className="label-text">Username</span>
+              <span className="label-text">Email</span>
             </label>
             <input
               type="text"
-              placeholder="Username"
+              placeholder="email"
               className="input input-bordered w-full "
+              {...register("email", { required: true })}
             />
           </div>
           <div className="form-control w-full ">
@@ -46,6 +105,7 @@ const AuthForm = ({ mode }) => {
               type="password"
               placeholder="Password"
               className="input input-bordered w-full "
+              {...register("password", { required: true })}
             />
             <label className="label">
               <Link
@@ -58,7 +118,10 @@ const AuthForm = ({ mode }) => {
             </label>
           </div>
           <div className="card-actions justify-end pt-2">
-            <button className="btn btn-primary px-10">
+            <button
+              className="btn btn-primary px-10"
+              onClick={handleSubmit(onSubmit)}
+            >
               {content.buttonText}
             </button>
           </div>

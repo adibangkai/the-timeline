@@ -20,7 +20,10 @@ export default async function DetailsPage({ params }) {
   return (
     <div className="h-fit w-5/6 md:w-5/6 mx-auto mt-10 min-h-max">
       <div className=" py-8 ">
-        <p className="text-4xl font-bold  text-center"> Data - {tokoh.name}</p>
+        <p className="text-4xl font-extralight  text-center">
+          {" "}
+          Data - {tokoh.name}
+        </p>
       </div>
       <div className="grid grid-cols-2">
         <div className="w-full">

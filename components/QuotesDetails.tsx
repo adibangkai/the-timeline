@@ -1,6 +1,7 @@
 import { db } from "@/lib/db";
 
 import Link from "next/link";
+import AddQuotes from "./AddQuotes";
 
 const getData = async (id: string) => {
   const quotes = await db.quotes.findMany({
@@ -19,10 +20,24 @@ export default async function QuotesDetails({ id }) {
   return (
     <div className="w-full ">
       <div className="w-full mx-auto justify-end grid my-4">
-        <Link href={"/tokoh"}>
-          <button className="btn btn-primary  ">tambah quote</button>
-        </Link>
+        <label htmlFor="quote-modal" className="btn">
+          Tambah Quotes
+        </label>
       </div>
+      <input type="checkbox" id="quote-modal" className="modal-toggle" />
+      {/* <label htmlFor="quote-modal" className="modal cursor-pointer"> */}
+      <div className="modal">
+        <div className="modal-box ursor-pointer pt-10">
+          <label
+            htmlFor="quote-modal"
+            className="text-black  cursor-pointer absolute right-2 top-2"
+          >
+            ✕
+          </label>
+          <AddQuotes />
+        </div>
+      </div>
+      {/* </label> */}
       <table className="table-fixed table-compact  mx-auto  mb-14 text-left w-full">
         {/* head */}
         <thead className="bg-base-200 rounded-lg">

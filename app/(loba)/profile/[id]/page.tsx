@@ -20,8 +20,8 @@ export default async function JejakPage({ params }) {
 
   return (
     <>
-      <div className="w-5/6 mx-auto  mt-20 text-black">
-        <div className="flex md:flex-row flex-col ">
+      <div className="w-full mx-auto  mt-20 text-black">
+        <div className="flex md:flex-row flex-col w-5/6 mx-auto">
           <div className="w-full md:w-1/4">
             <Image
               src={`/capres/${tokoh.nick}.png`}
@@ -52,7 +52,7 @@ export default async function JejakPage({ params }) {
           </div>
         </div>
 
-        <div className="map mt-8">
+        <div className="map mt-8 bg-slate-100 w-full px-10">
           <Suspense fallback={<MapSkeleton />}>
             <MapIndo tokoh={tokoh.nick} />
           </Suspense>
