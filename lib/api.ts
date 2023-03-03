@@ -25,3 +25,13 @@ export const signup = (user) => {
 export const signin = (user) => {
   return fetcher({ url: "/api/signin", method: "post", body: user });
 };
+
+export const logout = async () => {
+  await fetch("/api/logout");
+  // return fetcher({
+  //   url: "/api/logout",
+  //   method: "POST",
+  //   body: { name },
+  //   json: false,
+  // });
+};

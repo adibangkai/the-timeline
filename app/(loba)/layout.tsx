@@ -1,5 +1,6 @@
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
+import Toast from "@/components/Toast";
 import "@/styles/style.css";
 import { Alegreya_Sans } from "@next/font/google";
 
@@ -19,6 +20,8 @@ export default function RootLayout({
       <head />
       <body className="bg-base-100  flex flex-col min-h-screen ">
         <Navbar />
+        <Toast />
+
         {children}
         <Footer />
       </body>

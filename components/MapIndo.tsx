@@ -21,10 +21,20 @@ const MapIndo = ({ tokoh }: tokohInterface) => {
   const colorScale = scaleLinear().domain([0.29, 0.68]).range([warnaA, warnaB]);
 
   return (
-    <div>
+    <div className="">
       <p className="font-extralight text-slate-400 text-center text-xl top-[200]">
         Potensi Pemilih:
       </p>
+      <div className="flex items-center gap-4 place-content-center ">
+        <p className="font-extralight text-slate-400">Lemah</p>
+        <div
+          className="h-4 w-2/12"
+          style={{
+            backgroundImage: `linear-gradient(to right,${warnaA},${warnaB}`,
+          }}
+        ></div>
+        <p className="font-extralight text-slate-400">Kuat</p>
+      </div>
       <ComposableMap
         width={800}
         height={300}

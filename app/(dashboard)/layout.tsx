@@ -1,9 +1,7 @@
-import Footer from "@/components/Footer";
-import Navbar from "@/components/Navbar";
-import DashboardBar from "@/components/DashboardBar";
 import "@/styles/style.css";
 import { Alegreya_Sans } from "@next/font/google";
-
+import Toast from "@/components/Toast";
+import "react-toastify/dist/ReactToastify.css";
 const alagreyaSC = Alegreya_Sans({
   subsets: ["cyrillic"],
   variable: "--alagreyaSC-font",
@@ -19,7 +17,8 @@ export default function RootLayout({
     <html className={alagreyaSC.variable}>
       <head />
       <body className="bg-base-100  flex flex-col min-h-screen ">
-        <DashboardBar>{children}</DashboardBar>
+        <Toast />
+        {children}
       </body>
     </html>
   );

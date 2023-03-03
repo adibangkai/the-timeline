@@ -1,5 +1,4 @@
 import { db } from "@/lib/db";
-import Image from "next/image";
 import Link from "next/link";
 
 const getData = async () => {
@@ -12,7 +11,7 @@ export default async function DashboardPage() {
   return (
     <div className="w-full mt-4 mx-auto">
       <div className="w-3/4 mx-auto justify-end grid my-4">
-        <Link href={"/tokoh"}>
+        <Link href={"/dashboard/tokoh"}>
           <button className="btn btn-primary  ">tambah tokoh</button>
         </Link>
       </div>
@@ -45,7 +44,7 @@ export default async function DashboardPage() {
 
               <td>{tokoh.partai}</td>
               <th>
-                <Link href={`/details/${tokoh.id}`}>
+                <Link href={`/dashboard/details/${tokoh.id}`}>
                   <button className="btn btn-ghost btn-xs">details</button>
                 </Link>
               </th>

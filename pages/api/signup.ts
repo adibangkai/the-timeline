@@ -17,15 +17,15 @@ export default async function signup(
       },
     });
 
-    // const jwt = await createJWT(user);
-    // res.setHeader(
-    //   "Set-Cookie",
-    //   serialize(process.env.COOKIE_NAME, jwt, {
-    //     httpOnly: true,
-    //     path: "/",
-    //     maxAge: 60 * 60 * 24 * 7,
-    //   })
-    // );
+    const jwt = await createJWT(user);
+    res.setHeader(
+      "Set-Cookie",
+      serialize(process.env.COOKIE_NAME, jwt, {
+        httpOnly: true,
+        path: "/",
+        maxAge: 60 * 60 * 24 * 7,
+      })
+    );
     res.status(201);
     res.json({});
   } else {

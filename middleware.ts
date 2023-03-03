@@ -14,7 +14,15 @@ const verifyJWT = async (jwt) => {
 
 export default async function middleware(req, res) {
   const { pathname } = req.nextUrl;
+  const jwt = req.cookies.get(process.env.COOKIE_NAME);
 
+  if (
+    jwt &&
+    (pathname.startsWith("/signin") || pathname.startsWith("/register"))
+  ) {
+    req.nextUrl.pathname = "/dashboard";
+    return NextResponse.redirect(req.nextUrl);
+  }
   if (
     pathname.startsWith("/_next") ||
     pathname.startsWith("/api") || // ini bisa di komen kalo di handler gamake auth
@@ -29,15 +37,6 @@ export default async function middleware(req, res) {
     PUBLIC_FILE.test(pathname)
   ) {
     return NextResponse.next();
-  }
-  const jwt = req.cookies.get(process.env.COOKIE_NAME);
-
-  if (
-    jwt &&
-    (pathname.startsWith("/signin") || pathname.startsWith("/register"))
-  ) {
-    req.nextUrl.pathname = "/home";
-    return NextResponse.redirect(req.nextUrl);
   }
 
   if (!jwt) {

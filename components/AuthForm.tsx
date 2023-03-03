@@ -1,9 +1,11 @@
 "use client";
 
-import { signup } from "@/lib/api";
-import { signIn } from "next-auth/react";
+import { signin, signup } from "@/lib/api";
+
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
 
 const registerContent = {
   linkUrl: "/signin",
@@ -21,6 +23,8 @@ const signinContent = {
 };
 
 const AuthForm = ({ mode }) => {
+  const router = useRouter();
+
   const { register, handleSubmit } = useForm({
     defaultValues: {
       email: "",
@@ -36,18 +40,30 @@ const AuthForm = ({ mode }) => {
         console.log("register trigger", data);
         await signup(data);
       } else {
-        // await signin(formState);
-        await signIn("credentials", {
-          email: data.email,
-          password: data.password,
-          redirect: true,
-          callbackUrl: "/dashboard",
-        });
+        await signin(data);
       }
-
-      // router.replace("/home");
+      router.replace("/dashboard");
+      toast.success(`${mode} success`, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
     } catch (e) {
-      // setError(`Could not ${mode}`);
+      toast.error(`could not ${mode}`, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
     }
   };
   const content = mode === "register" ? registerContent : signinContent;

@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function DashboardBar({ children }) {
   return (
     <div className="drawer ">
@@ -38,7 +40,7 @@ export default function DashboardBar({ children }) {
             <a>Masukan</a>
           </li>
           <li>
-            <a>Logout</a>
+            <Link href={"/api/logout"}>Logout</Link>
           </li>
         </ul>
       </div>
