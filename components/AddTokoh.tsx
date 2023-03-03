@@ -1,14 +1,46 @@
 "use client";
+import { addTokoh } from "@/lib/api";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
 
 const AddTokoh = () => {
+  const router = useRouter();
+
   const {
     register,
     handleSubmit,
-
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = async (data) => {
+    console.log(data);
+    try {
+      await addTokoh(data);
+      router.replace("/dashboard");
+      toast.success(`berhasil`, {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    } catch {
+      router.refresh();
+      toast.error(`ada yang error nih`, {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    }
+  };
 
   return (
     <form action="w-full" onSubmit={handleSubmit(onSubmit)}>

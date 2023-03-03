@@ -25,7 +25,7 @@ export default async function TopicDetails({ id, topic }) {
       <input type="checkbox" id="my-modal-4" className="modal-toggle" />
       <label htmlFor="my-modal-4" className="modal">
         <div className="modal-box">
-          <AddTopic />
+          <AddTopic id={id} />
         </div>
       </label>
       <table className="table w-3/4 rounded-sm mx-auto  mb-14">

@@ -12,7 +12,12 @@ const getData = async (id: string) => {
     },
   });
 
-  return quotes;
+  const topic = await db.topic.findMany({
+    where: { tokohId: id },
+    orderBy: { topicName: "asc" },
+  });
+
+  return { quotes, topic };
 };
 export default async function QuotesDetails({ id }) {
   const data = await getData(id);
@@ -34,7 +39,7 @@ export default async function QuotesDetails({ id }) {
           >
             ✕
           </label>
-          <AddQuotes />
+          <AddQuotes topic={data.topic} />
         </div>
       </div>
       {/* </label> */}
@@ -48,7 +53,7 @@ export default async function QuotesDetails({ id }) {
           </tr>
         </thead>
         <tbody>
-          {data.map((quote) => (
+          {data.quotes.map((quote) => (
             <tr key={quote.id} className="overflow-x-scroll">
               <td className="w-4/6 rounded-t-lg">{quote.quote}</td>
               <td className="w-1/6">{quote.topic.topicName}</td>

@@ -35,3 +35,30 @@ export const logout = async () => {
   //   json: false,
   // });
 };
+
+export const addTokoh = async (tokoh) => {
+  return fetcher({
+    url: "/api/tokoh",
+    method: "POST",
+    body: tokoh,
+    json: true,
+  });
+};
+
+export const addTopic = async (topic) => {
+  return fetcher({
+    url: "/api/topic",
+    method: "POST",
+    body: topic,
+    json: true,
+  });
+};
+
+export const addQuotes = async (quote) => {
+  return fetcher({
+    url: "/api/quote",
+    method: "POST",
+    body: quote,
+    json: true,
+  });
+};
