@@ -11,6 +11,8 @@ export default async function handler(req, res) {
       fullname: req.body.fullname,
       partai: req.body.partai,
       jabatan: req.body.jabatan,
+      position: req.body.position,
+      potoUrl: req.body.potoUrl,
     },
   });
 

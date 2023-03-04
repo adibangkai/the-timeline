@@ -14,6 +14,8 @@ const DetailsForm = ({ tokoh }) => {
       fullname: `${tokoh.fullname}`,
       partai: `${tokoh.partai}`,
       jabatan: `${tokoh.jabatan}`,
+      potoUrl: `${tokoh.potoUrl}`,
+      position: `${tokoh.position}`,
     },
   });
   const onSubmit = (data) => console.log(data);
@@ -76,6 +78,20 @@ const DetailsForm = ({ tokoh }) => {
       <div className="form-control">
         <div className="w-full">
           <label className="label">
+            <span className="label-text">Foto</span>
+          </label>
+          <input
+            type="text"
+            placeholder="Foto URL"
+            className="input input-bordered w-full rounded-none"
+            {...register("potoUrl")}
+          />
+        </div>
+      </div>
+
+      <div className="form-control">
+        <div className="w-full">
+          <label className="label">
             <span className="label-text">Jabatan</span>
           </label>
           <input
@@ -83,6 +99,20 @@ const DetailsForm = ({ tokoh }) => {
             placeholder="Nama Lengkap"
             className="input input-bordered w-full rounded-none"
             {...register("jabatan")}
+          />
+        </div>
+      </div>
+
+      <div className="form-control">
+        <div className="w-full">
+          <label className="label">
+            <span className="label-text">position</span>
+          </label>
+          <input
+            type="text"
+            placeholder="urutan"
+            className="input input-bordered w-full rounded-none"
+            {...register("position")}
           />
         </div>
       </div>

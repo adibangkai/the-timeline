@@ -1,25 +1,15 @@
-import { db } from "@/lib/db";
-
+import { getTopic } from "@/lib/utils";
 import Link from "next/link";
 import AddTopic from "./AddTopic";
 
-const getData = async (id: string) => {
-  const topic = await db.topic.findMany({
-    where: { tokohId: id },
-    orderBy: { topicName: "asc" },
-  });
-
-  return { topic };
-};
-
 export default async function TopicDetails({ id, topic }) {
-  const data = topic || (await getData(id));
+  const data = topic || (await getTopic(id));
 
   return (
     <div className="w-full mt-4 mx-auto">
       <div className="w-3/4 mx-auto justify-end grid my-4">
         <label htmlFor="my-modal-4" className="btn">
-          open modal
+          Tambah Topik
         </label>
       </div>
       <input type="checkbox" id="my-modal-4" className="modal-toggle" />
@@ -33,12 +23,14 @@ export default async function TopicDetails({ id, topic }) {
         <thead>
           <tr>
             <th>Topik</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
           {data.map((topik) => (
             <tr key={topik.id}>
               <td>{topik.topicName}</td>
+              <td>x</td>
             </tr>
           ))}
           {/* row 1 */}

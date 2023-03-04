@@ -26,13 +26,10 @@ export default async function DetailsPage({ params }) {
         </p>
       </div>
       <div className="grid grid-cols-2">
-        <div className="w-full">
-          <Image
-            src={`/capres/${tokoh.nick}.png`}
-            alt=""
-            width={300}
-            height={400}
-            className=" mx-auto content-center "
+        <div className="w-full place-content-center">
+          <img
+            src={tokoh?.potoUrl}
+            className=" mx-auto content-center w-[300px] "
           />
         </div>
         <DetailsForm tokoh={tokoh} />

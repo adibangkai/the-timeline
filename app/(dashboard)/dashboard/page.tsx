@@ -1,12 +1,9 @@
 import { db } from "@/lib/db";
 import Link from "next/link";
+import { getAll } from "@/lib/utils";
 
-const getData = async () => {
-  const tokohIndex = await db.tokoh.findMany();
-  return { tokohIndex };
-};
 export default async function DashboardPage() {
-  const { tokohIndex } = await getData();
+  const { tokohIndex } = await getAll();
 
   return (
     <div className="w-full mt-4 mx-auto">

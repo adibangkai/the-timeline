@@ -7,29 +7,18 @@ import MapIndo from "@/components/MapIndo";
 import { Suspense } from "react";
 import MapSkeleton from "@/components/MapSkeleton";
 import Link from "next/link";
+import { cache } from "react";
+import { getTokoh } from "@/lib/utils";
 
-const getData = async (id: string) => {
-  const tokoh = await db.tokoh.findUnique({
-    where: { id: id },
-  });
-
-  return { tokoh };
-};
 export default async function JejakPage({ params }) {
-  const { tokoh } = await getData(params.id);
+  const { tokoh } = await getTokoh(params.id);
 
   return (
     <>
       <div className="w-full mx-auto  mt-20 text-black">
         <div className="flex md:flex-row flex-col w-5/6 mx-auto">
           <div className="w-full md:w-1/4">
-            <Image
-              src={`/capres/${tokoh.nick}.png`}
-              alt=""
-              width={300}
-              height={400}
-              className=" mx-auto content-center"
-            />
+            <img src={tokoh?.potoUrl} className=" mx-auto content-center" />
           </div>
           <div className="w-full md:w-3/4 mt-10 md:ml-20 ml-0 mx-auto  content-center grid relative md:text-left text-center">
             <Image
@@ -77,6 +66,6 @@ export default async function JejakPage({ params }) {
 }
 
 export async function generateMetadata({ params }) {
-  const { tokoh } = await getData(params.id);
+  const { tokoh } = await getTokoh(params.id);
   return { title: `${tokoh.name} - Profil` };
 }

@@ -16,17 +16,17 @@ const partaiMap = {
   Golkar: "bg-amber-400 text-white",
 };
 const ProfileCard: FC<{ tokoh: Tokoh }> = ({ tokoh }) => {
-  const { nick, id, name, partai } = tokoh;
+  const { nick, id, name, partai, potoUrl } = tokoh;
   return (
     <Link href={`/profile/${id}`}>
       <div className="justify-center mx-auto flex max-w-[314px] flex-col  cursor-pointer overflow-hidden grayscale hover:grayscale-0">
         <div className="h-min overflow-hidden  ">
-          <Image
-            src={`/capres/${nick}.png`}
+          <img
+            src={potoUrl}
             alt=""
-            width={300}
-            height={400}
-            className="w-[300px] scale-[1.04] hover:scale-[1.1] transition-all mx-auto"
+            // width={300}
+            // height={400}
+            className="w-[300px] z-30 h-[300px] object-cover scale-[1.04] hover:scale-[1.1] transition-all mx-auto"
           />
         </div>
         <div

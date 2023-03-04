@@ -1,13 +1,9 @@
 import ProfileCard from "@/components/ProfileCard";
-import { db } from "@/lib/db";
+import { getAll } from "@/lib/utils";
 import { Metadata } from "next";
 
-const getData = async () => {
-  const tokohIndex = await db.tokoh.findMany();
-  return { tokohIndex };
-};
 export default async function Home() {
-  const { tokohIndex } = await getData();
+  const { tokohIndex } = await getAll();
 
   return (
     <div className="w-full ">
