@@ -1,11 +1,31 @@
 "use client";
-import { addQuotes } from "@/lib/api";
+import { addQuotes, getTopic } from "@/lib/api";
 import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 
-const AddQuotes = ({ topic }) => {
+const AddQuotes = ({ id }) => {
+  const [dataTopic, setDataTopic] = useState(null);
+  const [isLoading, setLoading] = useState(false);
   const route = useRouter();
+
+  useEffect(() => {
+    setLoading(true);
+    const fetchData = async () => {
+      const data = await fetch(`/api/topic?tokohId=${id}`);
+      const json = await data.json();
+
+      setDataTopic(json);
+      setLoading(false);
+    };
+
+    // call the function
+    fetchData()
+      // make sure to catch any error
+      .catch(console.error);
+  }, []);
+
   const dateToString = (val) => {
     const event = new Date(val);
 
@@ -19,7 +39,7 @@ const AddQuotes = ({ topic }) => {
     formState: { errors },
   } = useForm({
     defaultValues: {
-      ownerId: topic[0].tokohId,
+      ownerId: id,
       topicId: "",
       quote: "",
       sourceQuote: "",
@@ -65,6 +85,8 @@ const AddQuotes = ({ topic }) => {
       });
     }
   };
+  if (isLoading) return <p>Loading...</p>;
+  if (!dataTopic) return <p>No profile data</p>;
 
   return (
     <div>
@@ -76,11 +98,12 @@ const AddQuotes = ({ topic }) => {
           <option disabled selected>
             Pilih Topik
           </option>
-          {topic.map((t) => (
-            <option key={t.id} value={t.id}>
-              {t.topicName}
-            </option>
-          ))}
+          {dataTopic &&
+            dataTopic.data.topic.map((t) => (
+              <option key={t.id} value={t.id}>
+                {t.topicName}
+              </option>
+            ))}
         </select>
         <textarea
           placeholder="Quotes"

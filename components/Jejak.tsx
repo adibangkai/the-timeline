@@ -1,18 +1,50 @@
 "use client";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Timeline from "./Timeline";
 import { motion } from "framer-motion";
 import Quotes from "./Quotes";
 
-export default function Jejak({ quotes }) {
+export default function Jejak({ id }) {
   const containerRef = useRef<HTMLDivElement>(null);
-  if (quotes.length === 0) {
+  const [quotes, setQuotes] = useState("");
+  const [isLoading, setLoading] = useState(false);
+  const [isUpdate, setUpdate] = useState(false);
+
+  useEffect(() => {
+    setLoading(true);
+    const fetchData = async () => {
+      const data = await fetch(`/api/quote?topicId=${id}`);
+      const json = await data.json();
+      setQuotes(json);
+      setLoading(false);
+    };
+
+    // call the function
+    fetchData()
+      // make sure to catch any error
+      .catch(console.error);
+  }, []);
+
+  if (isLoading)
+    return (
+      <div className="animate-pulse mt-80 text-center  text-2xl md:text-4xl font-extralight text-gray-400">
+        tunggu yaa...
+      </div>
+    );
+
+  if (!quotes)
     return (
       <div className="mt-80 text-center  text-2xl md:text-4xl font-extralight text-gray-400">
         no quotes yet...
       </div>
     );
-  }
+  // if (quotes.length === 0) {
+  //   return (
+  //     <div className="mt-80 text-center  text-2xl md:text-4xl font-extralight text-gray-400">
+  //       no quotes yet...
+  //     </div>
+  //   );
+  // }
   return (
     <>
       <motion.div
@@ -22,7 +54,7 @@ export default function Jejak({ quotes }) {
         ref={containerRef}
         className="px-0 md:px-40 snap-y snap-mandatory overflow-scroll top-0 h-screen  scroll-smooth"
       >
-        {quotes.map((q) => (
+        {quotes.data.dataQuote.map((q) => (
           <Quotes
             key={q.id}
             containerRef={containerRef}
@@ -32,7 +64,7 @@ export default function Jejak({ quotes }) {
           />
         ))}
       </motion.div>
-      <Timeline containerRef={containerRef} quotes={quotes} />
+      <Timeline containerRef={containerRef} quotes={quotes.data.dataQuote} />
     </>
   );
 }

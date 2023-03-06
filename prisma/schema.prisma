@@ -28,7 +28,7 @@ model Tokoh {
   fullname    String
   partai      String
   jabatan     String?
-  potoUrl     String?
+  potoUrl     String?  @db.Text
   position    Int?      
   quotes      Quotes[]
   topic       Topic[]

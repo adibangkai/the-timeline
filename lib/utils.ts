@@ -24,3 +24,38 @@ export const getTopic = cache(async (id: string) => {
 
   return { topic };
 });
+export const getTopicSingle = cache(async (id: string) => {
+  const topic = await db.topic.findUnique({
+    where: { id: id },
+    include: {
+      tokoh: true,
+    },
+  });
+
+  return { topic };
+});
+export const getQuote = cache(async (id: string) => {
+  const quotes = await db.quotes.findMany({
+    where: { ownerId: id },
+    orderBy: { dateQuote: "asc" },
+    include: {
+      topic: true,
+      owner: true,
+    },
+  });
+
+  return { quotes };
+});
+
+export const getQuotes = cache(async (id: string) => {
+  const quotes = await db.quotes.findMany({
+    where: { topicId: id },
+    orderBy: { dateQuote: "asc" },
+    include: {
+      owner: true,
+      topic: true,
+    },
+  });
+
+  return { quotes };
+});

@@ -2,8 +2,8 @@ import { getTopic } from "@/lib/utils";
 import Link from "next/link";
 import AddTopic from "./AddTopic";
 
-export default async function TopicDetails({ id, topic }) {
-  const data = topic || (await getTopic(id));
+export default async function TopicDetails({ id }) {
+  const data = await getTopic(id);
 
   return (
     <div className="w-full mt-4 mx-auto">
@@ -27,7 +27,7 @@ export default async function TopicDetails({ id, topic }) {
           </tr>
         </thead>
         <tbody>
-          {data.map((topik) => (
+          {data.topic.map((topik) => (
             <tr key={topik.id}>
               <td>{topik.topicName}</td>
               <td>x</td>

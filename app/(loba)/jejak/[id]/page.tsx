@@ -1,33 +1,26 @@
 import Jejak from "@/components/Jejak";
-import { db } from "@/lib/db";
 import Quotes from "@/components/Quotes";
-import { Metadata } from "next";
+import { getQuotes, getTopic, getTopicSingle } from "@/lib/utils";
 
-const getData = async (id: string) => {
-  const quotes = await db.quotes.findMany({
-    where: { ownerId: id },
-    orderBy: { dateQuote: "asc" },
-  });
-  const tokoh = await db.tokoh.findUnique({
-    where: { id: id },
-  });
-
-  return { quotes, tokoh };
-};
 export default async function JejakPage({ params }) {
-  const { quotes } = await getData(params.id);
-  console.log(quotes);
-
+  const { quotes } = await getQuotes(params.id);
+  if (quotes.length === 0) {
+    return (
+      <div className="mt-80 text-center  text-2xl md:text-4xl font-extralight text-gray-400">
+        no quotes yet...
+      </div>
+    );
+  }
   return (
     <>
       <div className="w-full ">
-        <Jejak quotes={quotes} />
+        <Jejak id={params.id} />
       </div>
     </>
   );
 }
 
-export async function generateMetadata({ params }) {
-  const { tokoh } = await getData(params.id);
-  return { title: `${tokoh.name} - Jejak` };
+export async function generateMetadata({ params }): Promise<Metadata> {
+  const { topic } = await getTopicSingle(params.id);
+  return { title: `${topic?.tokoh.name} - ${topic?.topicName}` };
 }

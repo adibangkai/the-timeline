@@ -1,27 +1,9 @@
-import { db } from "@/lib/db";
-
-import Link from "next/link";
+import { getQuote } from "@/lib/utils";
 import AddQuotes from "./AddQuotes";
 
-const getData = async (id: string) => {
-  const quotes = await db.quotes.findMany({
-    where: { ownerId: id },
-    orderBy: { dateQuote: "asc" },
-    include: {
-      topic: true,
-    },
-  });
-
-  const topic = await db.topic.findMany({
-    where: { tokohId: id },
-    orderBy: { topicName: "asc" },
-  });
-
-  return { quotes, topic };
-};
 export default async function QuotesDetails({ id }) {
-  const data = await getData(id);
-  console.log(data);
+  const data = await getQuote(id);
+
   return (
     <div className="w-full ">
       <div className="w-full mx-auto justify-end grid my-4">
@@ -39,7 +21,7 @@ export default async function QuotesDetails({ id }) {
           >
             ✕
           </label>
-          <AddQuotes topic={data.topic} />
+          <AddQuotes id={id} />
         </div>
       </div>
       {/* </label> */}

@@ -1,8 +1,9 @@
 import DetailsForm from "@/components/DetailsForm";
+import DetailsFormSkeleton from "@/components/DetailsFormSkeleton";
 import QuotesDetails from "@/components/QuotesDetails";
 import TopicDetails from "@/components/TopicDetails";
 import { db } from "@/lib/db";
-import Image from "next/image";
+import { Suspense } from "react";
 
 const getData = async (id: string) => {
   const tokoh = await db.tokoh.findUnique({
@@ -29,17 +30,21 @@ export default async function DetailsPage({ params }) {
         <div className="w-full place-content-center">
           <img
             src={tokoh?.potoUrl}
-            className=" mx-auto content-center w-[300px] "
+            className=" mx-auto content-center w-[300px] z-30 h-[400px] object-cover my-auto "
           />
         </div>
-        <DetailsForm tokoh={tokoh} />
+        <Suspense fallback={<DetailsFormSkeleton />}>
+          <DetailsForm id={tokoh.id} />
+        </Suspense>
       </div>
       <div className="grid grid-cols-4">
         <div className="col-span-1">
-          <TopicDetails id={tokoh?.id} topic={tokoh?.topic} />
+          {/* @ts-expect-error Server Component */}
+          <TopicDetails id={tokoh?.id} />
         </div>
         <div className="col-span-3">
-          <QuotesDetails id={tokoh?.id} quotes={tokoh?.quotes} />
+          {/* @ts-expect-error Server Component */}
+          <QuotesDetails id={tokoh?.id} />
         </div>
       </div>
     </div>

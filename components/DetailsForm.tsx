@@ -1,24 +1,84 @@
 "use client";
+import { editTokoh } from "@/lib/api";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
+import DetailsFormSkeleton from "./DetailsFormSkeleton";
 
-const DetailsForm = ({ tokoh }) => {
+const DetailsForm = ({ id }) => {
+  const [dataTokoh, setDataTokoh] = useState("");
+  const [isLoading, setLoading] = useState(false);
+  const [isUpdate, setUpdate] = useState(false);
+  const route = useRouter();
+
   const {
     register,
     handleSubmit,
-
+    setValue,
+    reset,
     formState: { errors },
-  } = useForm({
-    defaultValues: {
-      name: `${tokoh.name}`,
-      nick: `${tokoh.nick}`,
-      fullname: `${tokoh.fullname}`,
-      partai: `${tokoh.partai}`,
-      jabatan: `${tokoh.jabatan}`,
-      potoUrl: `${tokoh.potoUrl}`,
-      position: `${tokoh.position}`,
-    },
-  });
-  const onSubmit = (data) => console.log(data);
+  } = useForm({});
+
+  useEffect(() => {
+    setLoading(true);
+    const fetchData = async () => {
+      const data = await fetch(`/api/tokoh?tokohId=${id}`);
+      const json = await data.json();
+      setDataTokoh(json);
+      setLoading(false);
+    };
+
+    // call the function
+    fetchData()
+      // make sure to catch any error
+      .catch(console.error);
+  }, [isUpdate]);
+
+  if (isLoading) return <DetailsFormSkeleton />;
+
+  if (!dataTokoh) return <p>No profile data</p>;
+
+  setValue("name", `${dataTokoh.tokoh.name}`);
+  setValue("nick", `${dataTokoh.tokoh.nick}`);
+  setValue("fullname", `${dataTokoh.tokoh.fullname}`);
+  setValue("partai", `${dataTokoh.tokoh.partai}`);
+  setValue("jabatan", `${dataTokoh.tokoh.jabatan}`);
+  setValue("position", `${dataTokoh.tokoh.position}`);
+  setValue("potoUrl", `${dataTokoh.tokoh.potoUrl}`);
+  const onSubmit = async (data) => {
+    const dataFinal = {
+      ...data,
+      id: id,
+      position: parseInt(data.position),
+    };
+    try {
+      setUpdate(true);
+      await editTokoh(dataFinal);
+      route.refresh();
+      toast.success(`berhasil`, {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    } catch {
+      toast.error(`ada yang error nih`, {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    }
+  };
 
   return (
     <form action="w-full" onSubmit={handleSubmit(onSubmit)}>

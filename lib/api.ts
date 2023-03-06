@@ -44,6 +44,14 @@ export const addTokoh = async (tokoh) => {
     json: true,
   });
 };
+export const editTokoh = async (tokoh) => {
+  return fetcher({
+    url: "/api/tokoh",
+    method: "PUT",
+    body: tokoh,
+    json: true,
+  });
+};
 
 export const addTopic = async (topic) => {
   return fetcher({
@@ -59,6 +67,15 @@ export const addQuotes = async (quote) => {
     url: "/api/quote",
     method: "POST",
     body: quote,
+    json: true,
+  });
+};
+
+export const getTopic = async (topicId) => {
+  return fetcher({
+    url: "/api/topic",
+    method: "GET",
+    body: { topicId },
     json: true,
   });
 };
