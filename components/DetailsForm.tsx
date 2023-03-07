@@ -91,7 +91,7 @@ const DetailsForm = ({ id }) => {
             type="text"
             placeholder="Name"
             className="input input-bordered w-full rounded-none"
-            {...register("name", { required: true, maxLength: 20 })}
+            {...register("name", { required: true })}
           />
         </div>
       </div>

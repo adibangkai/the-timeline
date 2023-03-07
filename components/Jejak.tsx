@@ -4,16 +4,17 @@ import Timeline from "./Timeline";
 import { motion } from "framer-motion";
 import Quotes from "./Quotes";
 
-export default function Jejak({ id }) {
+export default function Jejak({ id, mode }) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [quotes, setQuotes] = useState("");
   const [isLoading, setLoading] = useState(false);
-  const [isUpdate, setUpdate] = useState(false);
 
+  const url =
+    mode === "jejak" ? `/api/quote?topicId=${id}` : `/api/all?tokohId=${id}`;
   useEffect(() => {
     setLoading(true);
     const fetchData = async () => {
-      const data = await fetch(`/api/quote?topicId=${id}`);
+      const data = await fetch(url);
       const json = await data.json();
       setQuotes(json);
       setLoading(false);

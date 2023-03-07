@@ -14,7 +14,7 @@ export default async function JejakPage({ params }) {
   return (
     <>
       <div className="w-full ">
-        <Jejak id={params.id} />
+        <Jejak id={params.id} mode={"jejak"} />
       </div>
     </>
   );

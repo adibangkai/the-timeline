@@ -71,6 +71,23 @@ export const addQuotes = async (quote) => {
   });
 };
 
+export const addSaran = async (saran) => {
+  return fetcher({
+    url: "/api/saran",
+    method: "POST",
+    body: saran,
+    json: true,
+  });
+};
+export const addKontribusi = async (kontribusi) => {
+  return fetcher({
+    url: "/api/kontribusi",
+    method: "POST",
+    body: kontribusi,
+    json: true,
+  });
+};
+
 export const getTopic = async (topicId) => {
   return fetcher({
     url: "/api/topic",

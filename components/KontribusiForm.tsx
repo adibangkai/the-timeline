@@ -1,10 +1,10 @@
 "use client";
-import { addTokoh } from "@/lib/api";
-import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
+import { addKontribusi } from "@/lib/api";
+import { useRouter } from "next/navigation";
 
-const AddTokoh = () => {
+export default function KontribusiForm() {
   const router = useRouter();
 
   const {
@@ -15,9 +15,9 @@ const AddTokoh = () => {
   const onSubmit = async (data) => {
     console.log(data);
     try {
-      await addTokoh(data);
-      router.replace("/dashboard");
-      toast.success(`berhasil`, {
+      await addKontribusi(data);
+      router.replace("/");
+      toast.success(`Terimakasih atas saran yang diberikan`, {
         position: "top-right",
         autoClose: 3000,
         hideProgressBar: false,
@@ -41,7 +41,6 @@ const AddTokoh = () => {
       });
     }
   };
-
   return (
     <form action="w-full" onSubmit={handleSubmit(onSubmit)}>
       <div className="form-control w-full flex flex-row gap-4 ">
@@ -53,68 +52,45 @@ const AddTokoh = () => {
             type="text"
             placeholder="Name"
             className="input input-bordered w-full rounded-none"
-            {...register("name", { required: true, maxLength: 50 })}
+            {...register("name", { required: true, maxLength: 20 })}
           />
         </div>
-      </div>
-      <div className="form-control">
         <div className="w-full">
           <label className="label">
-            <span className="label-text">Nama Lengkap</span>
+            <span className="label-text">Email</span>
           </label>
           <input
             type="text"
-            placeholder="Nama Lengkap"
+            placeholder="Email"
             className="input input-bordered w-full rounded-none"
-            {...register("fullname", { required: true })}
+            {...register("email", { required: true, maxLength: 50 })}
           />
         </div>
       </div>
-      <div className="form-control">
-        <div className="w-full">
+      <div className="form-control w-full ">
+        <label className="label">
+          <span className="label-text">Masukan</span>
+        </label>
+        <textarea
+          placeholder="Masukan"
+          className="textarea textarea-bordered textarea-lg w-full rounded-none"
+          {...register("masukan", { required: true })}
+        ></textarea>
+      </div>
+      <div className="form-control w-full  mb-4">
+        <div>
           <label className="label">
-            <span className="label-text">Nick</span>
+            <span className="label-text">Sumber</span>
           </label>
           <input
             type="text"
-            placeholder="Nickname"
+            placeholder="Sumber"
             className="input input-bordered w-full rounded-none"
-            {...register("nick", { required: true })}
+            {...register("sourceLink", { required: true })}
           />
         </div>
       </div>
-      <div className="form-control">
-        <div className="w-full">
-          <label className="label">
-            <span className="label-text">Partai</span>
-          </label>
-          <input
-            type="text"
-            placeholder="Partai"
-            className="input input-bordered w-full rounded-none"
-            {...register("partai", { required: true })}
-          />
-        </div>
-      </div>
-
-      <div className="form-control">
-        <div className="w-full">
-          <label className="label">
-            <span className="label-text">Jabatan</span>
-          </label>
-          <input
-            type="text"
-            placeholder="Nama Lengkap"
-            className="input input-bordered w-full rounded-none"
-            {...register("jabatan")}
-          />
-        </div>
-      </div>
-      <button className="btn btn-outline w-full rounded-none mt-4">
-        Submit
-      </button>
+      <button className="btn btn-outline w-full rounded-none">Submit</button>
     </form>
   );
-};
-
-export default AddTokoh;
+}

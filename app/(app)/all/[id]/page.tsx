@@ -7,7 +7,7 @@ export default async function AllPage({ params }) {
   return (
     <>
       <div className="w-full ">
-        <Jejak quotes={quotes} />
+        <Jejak id={params.id} mode={"all"} />
       </div>
     </>
   );
